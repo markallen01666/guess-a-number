@@ -1,18 +1,26 @@
 import React from "react";
 import { View, Text, StyleSheet, TextInput, Button } from "react-native";
 
+import Card from "../components/Card";
+import Colors from '../constants/colors';
+import TextStyles from '../constants/textStyles';
+
 const StartGameScreen = props => {
   return (
     <View style={styles.screen}>
       <Text style={styles.title}>Start A New Game!</Text>
-      <View style={styles.inputContainer}>
+      <Card style={styles.inputContainer}>
         <Text style={styles.instructions}>Select A Number</Text>
         <TextInput />
         <View style={styles.buttonContainer}>
-          <Button title="Reset" onPress={() => {}} />
-          <Button title="Confirm" onPress={() => {}} />
+          <View style={styles.buttonStyle}>
+            <Button title="Reset" onPress={() => {}} color={Colors.secondary} />
+          </View>
+          <View style={styles.buttonStyle}>
+            <Button title="Confirm" onPress={() => {}} color={Colors.primary} />
+          </View>
         </View>
-      </View>
+      </Card>
     </View>
   );
 };
@@ -24,8 +32,8 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   title: {
-    color: "#c23616",
-    fontSize: 36,
+    color: Colors.primary,
+    fontSize: TextStyles.screenTitle,
     marginVertical: 10
   },
   buttonContainer: {
@@ -34,15 +42,18 @@ const styles = StyleSheet.create({
     justifyContent: "space-between",
     paddingHorizontal: 15
   },
+  buttonStyle: {
+    width: "40%"
+  },
   inputContainer: {
-    padding: 30,
     alignItems: "center",
     width: 300,
-    maxWidth: "80%",
-    fontSize: 36
+    maxWidth: "90%",
+    minWidth: "70%",
+    fontSize: TextStyles.screenInput
   },
   instructions: {
-    fontSize: 24
+    fontSize: TextStyles.screenBody
   }
 });
 
