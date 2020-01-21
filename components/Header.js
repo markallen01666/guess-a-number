@@ -23,7 +23,8 @@ const styles = StyleSheet.create({
   },
   headerTitle: {
     color: Colors.headerText,
-    fontSize: TextStyles.headerFontSize
+    fontSize: TextStyles.headerFontSize,
+    fontFamily: 'open-sans-bold'
   }
 });
 

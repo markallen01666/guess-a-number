@@ -1,5 +1,5 @@
 export default {
-  headerFontSize: 30,
+  headerFontSize: 20,
   screenTitle: 40,
   screenInput: 50,
   screenBody: 30
