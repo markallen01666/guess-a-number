@@ -5,6 +5,9 @@ const GameOverScreen = props => {
   return (
     <View style={styles.screen}>
       <Text>The Game is over!</Text>
+      <Text>Number of rounds: {props.roundsNumber}</Text>
+      <Text>Number chosen was: {props.userChoice}</Text>
+      <Button title="NEW GAME" onPress={props.onRestart} />
     </View>
   );
 };

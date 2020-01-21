@@ -37,25 +37,25 @@ const GameScreen = props => {
     // test for incorrect hint from user
     if (
       (direction === "lower" && currentGuess < props.userChoice) ||
-      (direction === "greater" && currentGuess > props.userChoice)
+      (direction === "higher" && currentGuess > props.userChoice)
     ) {
       Alert.alert("Error!", "You are wrong. Please press the correct button!"),
         [{ text: "Sorry", style: "cancel" }];
       return;
+    } else {
+      if (direction === "lower") {
+        currentHigh.current = currentGuess;
+      } else if (direction === "higher") {
+        currentLow.current = currentGuess;
+      }
+      const nextNumber = generateRandomBetween(
+        currentLow.current,
+        currentHigh.current,
+        currentGuess
+      );
+      setCurrentGuess(nextNumber);
+      setRounds(curRounds => curRounds + 1);
     }
-    if (direction === "lower") {
-      currentHigh.current = currentGuess;
-    }
-    if (direction === "higher") {
-      currentLow.current = currentGuess;
-    }
-    const nextNumber = generateRandomBetween(
-      currentLow.current,
-      currentHigh.current,
-      currentGuess
-    );
-    setCurrentGuess(nextNumber);
-    setRounds(curRounds => curRounds + 1);
   };
 
   return (
