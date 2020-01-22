@@ -1,13 +1,26 @@
 import React from "react";
-import { View, Text, StyleSheet, Button } from "react-native";
+import { View, StyleSheet, Button, Image } from "react-native";
+
+import TitleText from "../components/TitleText";
+import BodyText from "../components/BodyText";
 
 const GameOverScreen = props => {
   return (
     <View style={styles.screen}>
-      <Text>The Game is over!</Text>
-      <Text>Number of rounds: {props.roundsNumber}</Text>
-      <Text>Number chosen was: {props.userChoice}</Text>
-      <Button title="NEW GAME" onPress={props.onRestart} />
+      <TitleText>The Game is over!</TitleText>
+      <View style={styles.imageContainer}>
+        <Image
+          source={require("../assets/success.png")}
+          style={styles.image}
+          resize="cover"
+          fadeDuration={1000}
+        />
+      </View>
+      <BodyText>Number of rounds: {props.roundsNumber}</BodyText>
+      <BodyText>Number chosen was: {props.userChoice}</BodyText>
+      <View style={styles.buttonContainer}>
+        <Button title="NEW GAME" onPress={props.onRestart} />
+      </View>
     </View>
   );
 };
@@ -20,11 +33,20 @@ const styles = StyleSheet.create({
     alignItems: "center"
   },
   buttonContainer: {
-    flexDirection: "row",
-    justifyContent: "space-around",
-    marginTop: 20,
+    marginTop: 20
+  },
+  imageContainer: {
     width: 300,
-    maxWidth: "80%"
+    height: 300,
+    borderWidth: 5,
+    borderRadius: 300/2,
+    borderColor: "black",
+    overflow: "hidden",
+    marginVertical: 20
+  },
+  image: {
+    width: "100%",
+    height: "100%"
   }
 });
 
