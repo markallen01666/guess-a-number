@@ -1,13 +1,15 @@
 import React from "react";
-import { View, StyleSheet, Button, Image } from "react-native";
+import { Text, View, StyleSheet, Button, Image } from "react-native";
 
 import TitleText from "../components/TitleText";
 import BodyText from "../components/BodyText";
+import Colors from "../constants/colors";
+import MainButton from "../components/MainButton";
 
 const GameOverScreen = props => {
   return (
     <View style={styles.screen}>
-      <TitleText>The Game is over!</TitleText>
+      <TitleText style={styles.titleText}>The Game is over!</TitleText>
       <View style={styles.imageContainer}>
         <Image
           source={require("../assets/success.png")}
@@ -16,10 +18,16 @@ const GameOverScreen = props => {
           fadeDuration={1000}
         />
       </View>
-      <BodyText>Number of rounds: {props.roundsNumber}</BodyText>
-      <BodyText>Number chosen was: {props.userChoice}</BodyText>
+      <View style={styles.resultContainer}>
+        <BodyText style={styles.resultText}>
+          Your phone needed
+          <Text style={styles.highlight}> {props.roundsNumber}</Text> rounds to
+          guess the number
+          <Text style={styles.lowlight}> {props.userChoice}</Text>
+        </BodyText>
+      </View>
       <View style={styles.buttonContainer}>
-        <Button title="NEW GAME" onPress={props.onRestart} />
+        <MainButton onPress={props.onRestart}>NEW GAME</MainButton>
       </View>
     </View>
   );
@@ -39,7 +47,7 @@ const styles = StyleSheet.create({
     width: 300,
     height: 300,
     borderWidth: 5,
-    borderRadius: 300/2,
+    borderRadius: 300 / 2,
     borderColor: "black",
     overflow: "hidden",
     marginVertical: 20
@@ -47,6 +55,25 @@ const styles = StyleSheet.create({
   image: {
     width: "100%",
     height: "100%"
+  },
+  resultContainer: {
+    width: "80%"
+  },
+  titleText: {
+    textAlign: "center",
+    fontSize: 30
+  },
+  resultText: {
+    textAlign: "center",
+    fontSize: 20
+  },
+  highlight: {
+    color: Colors.primary,
+    fontFamily: "open-sans-bold"
+  },
+  lowlight: {
+    color: Colors.secondary,
+    fontFamily: "open-sans-bold"
   }
 });
 
